@@ -25,12 +25,12 @@ module ONVIF
                     xml.wsdl(:SetSystemDateAndTime) do
                         xml.wsdl :DateTimeType, system_date_time[:type]
                         xml.wsdl :DaylightSavings, system_date_time[:ds]
-                        unless options[:time_zone].nil?
+                        unless system_date_time[:time_zone].nil?
                             xml.wsdl(:TimeZone) do
                                 xml.sch :TZ, system_date_time[:time_zone][:tz]
                             end
                         end
-                        unless options[:date_time].nil?
+                        unless system_date_time[:date_time].nil?
                             xml.wsdl(:UTCDateTime) do
                                 xml.sch :Time do
                                     xml.sch :Hour, system_date_time[:date_time][:hour]
